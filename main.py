@@ -1,8 +1,12 @@
-#  using opencv-python package
+import os
 import cv2
 
-#  store gray version of image in variable, gray denoted by "0" argument
-color = cv2.imread('pic.png', 0)
+#  access directory with images
+images = os.listdir('images')
 
-# write to new file, with the product stored in "color variable"
-cv2.imwrite('gray-pic.png', color)
+# loop through each entry, saving a gray verion of each
+for image in images:
+  # save gray version of image
+  gray = cv2.imread(f'images/{image}', 0)
+  # write new grayscale file
+  cv2.imwrite(f'gray-{image}', gray)
